@@ -1,97 +1,220 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# GlowCart - Beauty E-commerce App
 
-# Getting Started
+A modern, minimalist cosmetic e-commerce app built with React Native CLI, featuring clean architecture, smooth animations, and an intuitive user experience.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Features
 
-## Step 1: Start Metro
+- **Onboarding Experience**: Beautiful welcome screen with compelling visuals
+- **Authentication**: Login and Registration with form validation
+- **Product Catalog**: Browse beauty products with search and filter functionality
+- **Product Details**: Comprehensive product information with reviews and ratings
+- **User Profile**: Account management and settings
+- **State Management**: Efficient data handling with Zustand
+- **API Integration**: Dynamic product data from DummyJSON API
+- **Responsive Design**: Optimized for various screen sizes
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+##  Screens
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+1. **Onboarding Screen** - Welcome experience with brand introduction
+2. **Login Screen** - User authentication with social login options
+3. **Register Screen** - Account creation with form validation
+4. **Home Screen** - Product catalog with search and filtering
+5. **Product Details** - Detailed product view with reviews
+6. **Profile Screen** - User account management and settings
 
-```sh
-# Using npm
-npm start
+##  Technical Stack
 
-# OR using Yarn
-yarn start
+- **Framework**: React Native CLI
+- **Navigation**: React Navigation v6
+- **State Management**: Zustand
+- **HTTP Client**: Axios
+- **API**: DummyJSON (https://dummyjson.com/products)
+- **Styling**: StyleSheet API
+- **Icons**: Unicode emojis and text symbols
+
+##  Prerequisites
+
+Before running this project, make sure you have:
+
+- Node.js (v14 or higher)
+- React Native CLI
+- Android Studio (for Android development)
+- Xcode (for iOS development - macOS only)
+- JDK 11 or higher
+
+##  Installation & Setup
+
+### 1. Clone the Repository
+
+```bash
+git clone <repository-url>
+cd GlowCart
 ```
 
-## Step 2: Build and run your app
+### 2. Install Dependencies
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
+```bash
+npm install
 ```
 
-### iOS
+### 3. Install Required Packages
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+```bash
+# Navigation dependencies
+npm install @react-navigation/native @react-navigation/stack @react-navigation/bottom-tabs
+npm install react-native-screens react-native-safe-area-context
+npm install react-native-gesture-handler
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+# HTTP client
+npm install axios
 
-```sh
-bundle install
+# State management
+npm install zustand
+
+# Optional: Vector icons
+npm install react-native-vector-icons
 ```
 
-Then, and every time you update your native dependencies, run:
+### 4. iOS Setup (macOS only)
 
-```sh
-bundle exec pod install
+```bash
+cd ios && pod install && cd ..
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+### 5. Android Setup
 
-```sh
-# Using npm
-npm run ios
+Make sure you have Android Studio installed and configured, then create an Android Virtual Device (AVD).
 
-# OR using Yarn
-yarn ios
+### 6. Run the Application
+
+#### For Android:
+```bash
+npx react-native run-android
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+#### For iOS:
+```bash
+npx react-native run-ios
+```
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
 
-## Step 3: Modify your app
+##  Design Features
 
-Now that you have successfully run the app, let's make changes!
+- **Color Scheme**: Rose gold and cream tones for a luxurious beauty brand feel
+- **Typography**: Clean, readable fonts with proper hierarchy
+- **Layout**: Grid-based product display with card-style components
+- **Navigation**: Intuitive tab and stack navigation
+- **Feedback**: Loading states, error handling, and user confirmations
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+##  API Integration
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+The app integrates with DummyJSON API to fetch product data:
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+- **Base URL**: `https://dummyjson.com`
+- **Products Endpoint**: `/products`
+- **Search Endpoint**: `/products/search`
+- **Product Details**: `/products/{id}`
 
-## Congratulations! :tada:
+Products are filtered and transformed to match cosmetic themes using keywords like "mascara", "lipstick", "foundation", etc.
 
-You've successfully run and modified your React Native App. :partying_face:
+##  State Management
 
-### Now what?
+Uses Zustand for lightweight, efficient state management:
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+- **Auth Store**: User authentication state
+- **Product Store**: Product data, loading states, and error handling
+- **Persistent State**: User session management
 
-# Troubleshooting
+##  Authentication Flow
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+1. **Onboarding**: Welcome screen with app introduction
+2. **Login**: Email/password authentication with validation
+3. **Registration**: Account creation with form validation
+4. **Session**: Persistent login state management
 
-# Learn More
+##  Key Features
 
-To learn more about React Native, take a look at the following resources:
+### Product Catalog
+- Grid layout with product cards
+- Search functionality
+- Filter options (UI implemented)
+- Pull-to-refresh support
+- Loading and error states
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+### Product Details
+- High-quality product images
+- Comprehensive product information
+- Star ratings and reviews
+- Add to bag functionality
+- Product highlights and specifications
+
+### User Profile
+- User information display
+- Settings and preferences
+- Account management options
+- Logout functionality
+
+## Development Time
+
+
+## Known Issues & Assumptions
+
+### Assumptions Made:
+1. **Mock Data**: Reviews and some product details are mocked for demonstration
+2. **Authentication**: Login/registration is simulated (no backend integration)
+3. **Icons**: Using Unicode emojis instead of vector icons for simplicity
+4. **Social Login**: UI only implementation for Google/Apple/Facebook login
+5. **Cart Functionality**: Add to bag shows confirmation but doesn't maintain cart state
+
+### Known Issues:
+1. **Images**: Some product images from DummyJSON may not match cosmetic themes
+2. **Offline Support**: No offline caching implemented
+3. **Deep Linking**: Not configured for production use
+4. **Push Notifications**: Not implemented
+
+## Future Enhancements
+
+- [ ] TypeScript integration
+- [ ] Animations and micro-interactions
+- [ ] Cart and checkout functionality
+- [ ] Payment integration
+- [ ] Push notifications
+- [ ] Offline support
+- [ ] Advanced filtering and sorting
+- [ ] Wishlist functionality
+- [ ] Order tracking
+- [ ] Product reviews submission
+
+##  Screenshots
+
+![Onboarding Screen](src/assets/images/onboarding.png)
+![login Screen](src/assets/images/login.png)
+![register Screen](src/assets/images/register.png)
+![registerValidation Screen](src/assets/images/registerValidation.png)
+![home Screen](src/assets/images/home.png)
+![productDetails Screen](src/assets/images/productDetails.png)
+![search Screen](src/assets/images/search.png)
+![profile Screen](src/assets/images/profile.png)
+
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+##  License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- DummyJSON for providing the product API
+- React Native community for excellent documentation
+- Design inspiration from modern e-commerce apps
+
+---
+
+**Note**: This is a demonstration project built for educational purposes. For production use, implement proper authentication, secure API endpoints, and comprehensive error handling.
